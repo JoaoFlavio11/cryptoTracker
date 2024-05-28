@@ -1,0 +1,65 @@
+:root{
+    --cor-btc: #f7931a;
+    --cor-eth: #8c8c8c;
+    --cor-doge: #f8bf1a;
+    --cor-rodape: #16161a;
+    --cor-texto: #fafafa;
+
+    --border-radius-cartao: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+
+    --padding-cartao: 1.8rem;
+    --padding-1: 1.2rem;
+
+    --box-shadow: 0 2rem 3rem var(--cor-claro);
+}
+
+.st-emotion-cache-h4xjwg {
+    color: aqua;
+}
+
+
+
+.crypto-info{
+    font-family: 'Source Sans Pro';
+    font-weight: bold;
+    font-style: italic;
+    font-size: 30px;
+    display: block; 
+    text-align: center;
+}
+
+.crypto-info.btc{
+    color: var(--cor-btc); 
+}
+.crypto-info.eth{
+    color: var(--cor-eth);
+}
+.crypto-info.doge{
+    color: var(--cor-doge);
+}
+
+
+
+footer {
+    background-color: var(--cor-rodape);
+    color: var(--cor-texto);
+    padding: var(--padding-1);
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer p {
+    margin: 0; 
+    display: flex;
+    align-items: center;
+    font-size: large;
+}
