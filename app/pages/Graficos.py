@@ -3,6 +3,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import os
+import base64
 
 from datetime import date
 from dateutil.relativedelta import relativedelta
@@ -51,10 +52,27 @@ mapa_criptos = {
     "Solana": ("SOL-USD", "solana.png", "solana")
 }
 
+def get_image_base64(image_path):
+    with open(image_path, "rb") as image_file:
+        encoded_string = base64.b64encode(image_file.read()).decode()
+    return encoded_string
+
 def render_crypto_info(nome_cripto, img_cripto, id_cripto):
-    col1, col2 = st.columns([1,2])
+    col1, col2 = st.columns([2, 2])
+    
+    img_path = os.path.join(imageDir, img_cripto)
+    img_base64 = get_image_base64(img_path)
+    
     with col1:
-        st.image(os.path.join(imageDir, img_cripto))
+        st.markdown(
+            f"""
+            <div class="header-graf">
+                <img src="data:image/png;base64,{img_base64}"/>
+                <h1>{nome_cripto}</h1>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
         
     with col2:
         cotacao_brl = pegar_cotacao_crypto(id_cripto)
@@ -69,8 +87,6 @@ def render_crypto_info(nome_cripto, img_cripto, id_cripto):
         """, unsafe_allow_html=True)
 
 def render_grafico():
-    st.markdown("## **Gráfico:** ", unsafe_allow_html=True)
-
     col1, col2 = st.columns([1,4])
 
     with col1:
@@ -97,3 +113,10 @@ def render_grafico():
                 st.plotly_chart(fig, use_container_width=True)
 
 render_grafico()
+
+st.markdown("""
+    <footer>
+        <p> Desenvolvido por João Flávio C. Lopes | &copy; 2024 Crypto Tracker. Todos os direitos reservados. </p>
+    </footer>
+            
+""",unsafe_allow_html=True)

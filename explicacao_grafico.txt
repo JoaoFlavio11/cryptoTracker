@@ -1,0 +1,38 @@
+A função `seletor_de_valor = st.selectbox("Selecionar valor", ("Open", "High", "Low", "Close", "Volume"))` permite que o usuário escolha qual dado específico de um conjunto de dados históricos de criptomoeda deseja visualizar no gráfico. Aqui está uma explicação mais detalhada do papel de cada valor disponível no seletor:
+
+1. **Open**: Valor de abertura da criptomoeda em cada período de tempo selecionado.
+2. **High**: Valor máximo atingido pela criptomoeda durante cada período de tempo selecionado.
+3. **Low**: Valor mínimo atingido pela criptomoeda durante cada período de tempo selecionado.
+4. **Close**: Valor de fechamento da criptomoeda em cada período de tempo selecionado.
+5. **Volume**: Quantidade total de criptomoedas negociadas durante cada período de tempo selecionado.
+
+Quando o usuário escolhe um desses valores no seletor, o gráfico gerado será baseado no valor específico escolhido. Por exemplo, se o usuário selecionar "Close", o gráfico mostrará os valores de fechamento da criptomoeda ao longo do tempo. Se selecionar "Volume", o gráfico mostrará o volume de negociação ao longo do tempo. Essa funcionalidade permite ao usuário analisar diferentes aspectos do comportamento da criptomoeda de maneira flexível e personalizada.
+
+<div> Ícones feitos por <a href="https://www.freepik.com" title="Freepik"> Freepik </a> from <a href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com'</a></div>
+
+<a href="https://www.flaticon.com/br/icones-gratis/bitcoin" title="bitcoin ícones">Bitcoin ícones criados por Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/br/icones-gratis/xrp" title="xrp ícones">Xrp ícones criados por Soni Sokell - Flaticon</a>
+<a href="https://www.flaticon.com/br/icones-gratis/litecoin" title="litecoin ícones">Litecoin ícones criados por Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/br/icones-gratis/bitcoin" title="bitcoin ícones">Bitcoin ícones criados por Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/br/icones-gratis/dogecoin" title="dogecoin ícones">Dogecoin ícones criados por srip - Flaticon</a> 
+<a href="https://www.flaticon.com/br/icones-gratis/criptomoeda" title="criptomoeda ícones">Criptomoeda ícones criados por srip - Flaticon</a>
+
+
+mapa_criptos = {
+    "Bitcoin": ("BTC-USD", "bitcoin.png", "bitcoin"),
+    "Bitcoin Cash": ("BCH-USD", "bitcoin-cash.png", "bitcoin-cash"),
+    "Ethereum": ("ETH-USD", "ethereum.png", "ethereum"),
+    "Dogecoin": ("DOGE-USD", "dogecoin.png", "dogecoin"),
+    "Ripple": ("XRP-USD", "ripple.png", "ripple"),
+    "Litecoin": ("LTC-USD", "litecoin.png", "litecoin"),
+    "Solana": ("SOL-USD", "solana.png", "solana"),
+    "Cardano": ("ADA-USD", "cardano.png", "cardano"),
+    "Polkadot": ("DOT-USD", "polkadot.png", "polkadot"),
+    "Binance Coin": ("BNB-USD", "binance-coin.png", "binancecoin"),
+    "Chainlink": ("LINK-USD", "chainlink.png", "chainlink"),
+    "Stellar": ("XLM-USD", "stellar.png", "stellar"),
+    "Uniswap": ("UNI-USD", "uniswap.png", "uniswap"),
+    "Avalanche": ("AVAX-USD", "avalanche.png", "avalanche-2"),
+    "Terra": ("LUNA-USD", "terra.png", "terra-luna"),
+    "Shiba Inu": ("SHIB-USD", "shiba-inu.png", "shiba-inu")
+}

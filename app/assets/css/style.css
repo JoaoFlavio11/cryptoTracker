@@ -4,7 +4,11 @@
     --cor-doge: #f8bf1a;
     --cor-rodape: #16161a;
     --cor-texto: #fafafa;
-
+    --cor-btc-cash:#79c152 ;
+    --cor-ripple: #dddded;
+    --cor-litecoin: #ffea94;
+    --cor-solana: #2488ff;
+    
     --border-radius-cartao: 2rem;
     --border-radius-1: 0.4rem;
     --border-radius-2: 0.8rem;
@@ -16,31 +20,59 @@
     --box-shadow: 0 2rem 3rem var(--cor-claro);
 }
 
+/*mudar isso*/
 .st-emotion-cache-h4xjwg {
     color: aqua;
 }
 
+.header-graf{
+    display: flex; 
+    align-items: center;
+    margin-left: 1rem;
+}
+.header-graf h1{
+    margin-left: 0.8rem;
+    font-size: 60px ;
+}
 
 
-.crypto-info{
+.crypto-info, .header-graf h1 {
     font-family: 'Source Sans Pro';
     font-weight: bold;
     font-style: italic;
-    font-size: 30px;
     display: block; 
     text-align: center;
 }
 
-.crypto-info.btc{
+.crypto-info{
+    font-size: 30px;
+}
+
+.crypto-info.bitcoin{
     color: var(--cor-btc); 
 }
-.crypto-info.eth{
+.crypto-info.ethereum{
     color: var(--cor-eth);
 }
-.crypto-info.doge{
+.crypto-info.dogecoin{
     color: var(--cor-doge);
 }
 
+.crypto-info.bitcoin-cash{
+    color: var(--cor-btc-cash);
+}
+
+.crypto-info.ripple{
+    color: var(--cor-ripple);
+}
+
+.crypto-info.litecoin{
+    color: var(--cor-litecoin);
+}
+
+.crypto-info.solana{
+    color: var(--cor-solana);
+}
 
 
 footer {

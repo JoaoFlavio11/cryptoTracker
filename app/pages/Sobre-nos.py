@@ -10,10 +10,15 @@ st.set_page_config(
 
 # Caminho deste diretório
 currentDir = os.path.dirname(os.path.abspath(__file__))
-
 # Caminho relativo para a pasta de imagens
 imageDir = os.path.join(currentDir, "..", "assets", "imgs")
+# Caminho relativo para o css
+cssDir = os.path.join(currentDir, "..", "assets", "css", "style.css")
 
+# Ler o css
+with open(cssDir) as f:
+    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+    
 st.title("Crypto Tracker - Sobre nós")
 
 st.markdown(""" 
@@ -47,34 +52,9 @@ with col4:
     st.markdown(" ### Doações em BTC: ")
 
 
-st.markdown(
-    """
-    <style>
-        
-        footer {
-            background-color: #16161a;
-            color: #fafafa;
-            padding: 9px;
-            text-align: center;
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        footer p {
-        margin: 0; 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    </style>
-
+st.markdown("""
     <footer>
         <p> Desenvolvido por João Flávio C. Lopes | &copy; 2024 Crypto Tracker. Todos os direitos reservados. </p>
     </footer>
-    """
-,unsafe_allow_html=True)
+            
+""",unsafe_allow_html=True)
