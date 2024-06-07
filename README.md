@@ -24,10 +24,6 @@ você precisará instalar as seguintes bibliotecas Python:
 5. **plotly** - Para criar gráficos interativos.
 6. **pycoingecko** - Para obter dados de preços de criptomoedas da API CoinGecko.
 
-- _Streamlit;_
-- _Pandas;_
-- _Plotly Express;_
-
 
 ## Organização dos Arquivos na pasta 
 
@@ -37,7 +33,7 @@ Para executar o aplicativo localmente, siga estas etapas:
 1. Clone o repositório para o seu ambiente local.
 2. Instale as dependências executando `pip install -r requirements.txt`.
 3. Navegue até o diretório do aplicativo usando o terminal.
-4. Execute o aplicativo com o comando `streamlit run app/1-dashboard.py`.
+4. Execute o aplicativo com o comando `streamlit run app/Home.py`.
 5. O aplicativo será iniciado e você terá acesso a ele no seu navegador.
 
 ## Licença

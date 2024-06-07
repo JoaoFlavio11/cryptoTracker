@@ -42,6 +42,12 @@ def pegar_cotacao_crypto2(crypto):
     price2 = cg.get_price(ids=crypto, vs_currencies='usd')
     return price2[crypto]['usd']
 
+def cotacao_formatada(valor, moeda="BRL"):
+    if moeda == "BRL":
+        return f"R$ {valor}".replace(",","X").replace(".",",").replace("X",".")
+    elif moeda == "USD":
+        return f"US$ {valor}"
+
 mapa_criptos = {
     "Bitcoin": ("BTC-USD", "bitcoin.png", "bitcoin"),
     "Bitcoin Cash": ("BCH-USD", "bitcoin-cash.png", "bitcoin-cash"),
@@ -77,11 +83,14 @@ def render_crypto_info(nome_cripto, img_cripto, id_cripto):
     with col2:
         cotacao_brl = pegar_cotacao_crypto(id_cripto)
         cotacao_usd = pegar_cotacao_crypto2(id_cripto)
+        cotacao_brl_formatada = cotacao_formatada(cotacao_brl, "BRL")
+        cotacao_usd_formatada = cotacao_formatada(cotacao_usd, "USD")
+
         st.markdown(f"""
             <div class="crypto-info {id_cripto}">
                 <span>
-                    Cotação BRL: R$ {cotacao_brl} <br>
-                    Cotação USD: US$ {cotacao_usd}
+                    Valor BRL: {cotacao_brl_formatada} <br>
+                    Valor USD: {cotacao_usd_formatada}
                 </span>
             </div>
         """, unsafe_allow_html=True)
@@ -92,21 +101,27 @@ def render_grafico():
     with col1:
         opcoes_cripto = st.selectbox("Escolha sua criptomoeda: ", list(mapa_criptos.keys()))
 
-        data_inicial = st.date_input("Data Inicial", date.today() - relativedelta(months=1))
+        data_inicial = st.date_input("Data Inicial:", date.today() - relativedelta(months=1))
 
-        data_final = st.date_input("Data Final", date.today())
+        data_final = st.date_input("Data Final:", date.today())
 
-        intervalo_datas = st.selectbox("Período:", ("1m", "2m", "5m", "15m", "30m", "1h", "1d", "5d", "1wk", "1mo", "3mo"))
+        intervalo_datas = st.selectbox("Período:", ("1 minuto", "2 minutos", "5 minutos", "15 minutos", "30 minutos", "1 hora", "1 dia", "5 dias", "1 semana", "1 mês", "3 meses"))
 
-        seletor_de_valor = st.selectbox("Selecionar valor", ("Open", "High", "Low", "Close", "Volume"))
+        seletor_de_valor = st.selectbox("Selecione o valor base:", ("Abertura", "Alta", "Baixa", "Fechamento", "Volume"))
 
         if st.button("Gerar"):
             with col2:
                 simbolo_cripto, img_cripto, id_cripto = mapa_criptos[opcoes_cripto]
                 ticker = yf.Ticker(simbolo_cripto)
-                hist_cripto = ticker.history(start=data_inicial, end=data_final, interval=intervalo_datas)
 
-                fig = px.line(hist_cripto, x=hist_cripto.index, y=seletor_de_valor, labels={"x": "Date", seletor_de_valor: "Value"})
+                datas_dict = {"1 minuto":"1m", "2 minutos":"2m", "5 minutos":"5m", "15 minutos":"15m","30 minutos":"30m","1 hora":"1h","1 dia":"1d","5 dias":"5d","1 semana":"1wk","1 mês":"1mo","3 meses":"3mo"}
+
+                hist_cripto = ticker.history(start=data_inicial, end=data_final, interval=datas_dict[intervalo_datas])
+
+                valor_dict = { "Abertura": "Open", "Alta":"High","Baixa":"Low","Fechamento":"Close","Volume":"Volume"}
+                valor_selecionado = valor_dict[seletor_de_valor]
+
+                fig = px.line(hist_cripto, x=hist_cripto.index, y=valor_selecionado, labels={"x": "Data", valor_selecionado: "Valor"})
 
                 render_crypto_info(opcoes_cripto, img_cripto, id_cripto)
 
